@@ -50,10 +50,26 @@ class empresa():
         else:
             print("A empresa está com saldo zerado!")
 
+def setor_empresa(self):
+    print("Empresas de Tecnologia: Microsoft, Apple e Samsung.")
 
-def objetivo_Principal():
+class Microsoft(empresa):
 
-    Empresa1 = empresa(
+    def setor_empresa(self):
+        print("Setor: Inteligência artificial e computação em nuvem.")
+
+class Apple(empresa):
+
+    def setor_empresa(self):
+        print("Setor: Dispositivos eletrônicos e software.")
+
+class Samsung(empresa):
+
+    def setor_empresa(self):
+        print("Setor: Eletrônicos de consumo e semicondutores.")
+
+def main():
+    Empresa1 = Microsoft(
         "MICROSOFT",
         "4 de abril de 1975",
         "Bill Gates e Paul Allen",
@@ -61,7 +77,7 @@ def objetivo_Principal():
         865858695
     )
 
-    Empresa2 = empresa(
+    Empresa2 = Apple(
         "APPLE",
         "1 de abril de 1976",
         "Steve Jobs, Steve Wozniak e Ronald Wayne",
@@ -69,65 +85,27 @@ def objetivo_Principal():
         687768800
     )
 
-    return Empresa1, Empresa2
+    Empresa3 = Samsung(
+        "SAMSUNG",
+        "1 de março de 1938",
+        "Lee Byung-chul",
+        "Desenvolvimento de produtos eletrônicos e inovação.",
+        500000000
+    )
+
+    Empresa1.descreva()
+    Empresa1.setor_empresa()
+
+    Empresa2.descreva()
+    Empresa2.setor_empresa()
+
+    Empresa3.descreva()
+    Empresa3.setor_empresa()
 
 
-# Criando as empresas
-Empresa1, Empresa2 = objetivo_Principal()
-
-# Mostrando os dados
-Empresa1.descreva()
-Empresa2.descreva()
-
-# Registrando lucro e prejuízo da Microsoft
-Empresa1.registrar_Lucro(500000000)
-Empresa1.registrar_Prejuizos(346547840)
-
-# Registrando lucro e prejuízo da Apple
-Empresa2.registrar_Lucro(300000000)
-Empresa2.registrar_Prejuizos(549765654)
-
-# Mostrando situação financeira
-Empresa1.mostrar_situacao_financeira()
-Empresa2.mostrar_situacao_financeira()
-
-class Empresa_Tecnologia(empresa):
-    def __init__(self, marca, ano_fundação, fundador, objetivos, meta):
-        super().__init__(marca, ano_fundação, fundador, objetivos, meta)
-
-Microsoft = Empresa_Tecnologia(
-        "MICROSOFT",
-        "4 de abril de 1975",
-        "Bill Gates e Paul Allen",
-        "Expansão da inteligência artificial e infraestrutura em nuvem.",
-        865858695
- )
-
-Microsoft.descreva()
-Microsoft.registrar_Lucro(500000000)
-Microsoft.registrar_Prejuizos(346547840)
-Microsoft.mostrar_situacao_financeira()
-
-class Empresa_Tecnológica(empresa):
-    def __init__(self, marca, ano_fundação, fundador, objetivos, meta):
-        super().__init__(marca, ano_fundação, fundador, objetivos, meta)
-
-Apple = Empresa_Tecnológica(
-        "APPLE",
-        "1 de abril de 1976",
-        "Steve Jobs, Steve Wozniak e Ronald Wayne",
-        "Desenvolvimento de produtos tecnológicos e inovação.",
-        687768800
-)
-Apple.descreva()
-Apple.registrar_Lucro(300000000)
-Apple.registrar_Prejuizos(549765654)
-Apple.mostrar_situacao_financeira()
-
-def Reunião_Empresarial(pauta):
-    pauta.discurso()
-
-    Reunião_Empresarial(empresa(), Empresa_Tecnologia(), Empresa_Tecnológica())
+if __name__ == "__main__":
+    main()
+    
 
 
 
