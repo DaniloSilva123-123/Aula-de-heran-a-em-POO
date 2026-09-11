@@ -68,44 +68,96 @@ class Samsung(empresa):
     def setor_empresa(self):
         print("Setor: Eletrônicos de consumo e semicondutores.")
 
+
+class funcionario():
+
+    def __init__(self, nome, idade, cargo, salario, empresa):
+
+        self.nome = nome
+        self.idade = idade
+        self.cargo = cargo
+        self.__salario = salario
+        self.empresa = empresa
+
+    def descreva_funcionario(self):
+
+        print(f"\nNome do funcionário: {self.nome}")
+        print(f"Cargo do funcionário: {self.cargo}")
+        print(f"Salário do funcionário: R${self.__salario}")
+
+    def registrar_aumento(self, aumento):
+        if aumento > 0:
+            self.__salario += aumento
+            print(f"O funcionário {self.nome} recebeu um aumento de R${aumento}. Novo salário: R${self.__salario}")
+
+        else:
+            print(f"Erro: O aumento não pode ser negativo. Valor fornecido: R${aumento}")
+            return f"Erro: O aumento não pode ser negativo. Valor fornecido: R${aumento}"
+
+        self.__salario += aumento
+
+        print(f"\nFuncionário: {self.nome}")
+        print(f"O aumento registrado desse funcionário é de: (+R$) {aumento}")
+        print(f"O salário atual do funcionário agora é: R${self.__salario}")
+
+        return f"{self.nome} recebeu um aumento de R${aumento} (+R$)!"
+    
+
+    def registrar_desconto(self, desconto):
+        if desconto < 0:
+            self.__salario -= desconto
+            print(f"O funcionário {self.nome} teve um desconto de R${desconto}. Novo salário: R${self.__salario}")
+            print(f"\nFuncionário: {self.nome}")
+            print(f"O desconto registrado desse funcionário é de: (-R$) {desconto}")
+            print(f"O salário atual do funcionário agora é: R${self.__salario}")
+
+            return f"{self.nome} teve um desconto de R${desconto} (-R$)!"
+
+    def calcular_salário_anual(self):
+        salario_anual = self.__salario * 12
+        print(f"\nFuncionário: {self.nome}")
+        print(f"O salário anual do funcionário é: R${salario_anual}")
+        return salario_anual
+
 def main():
-    Empresa1 = Microsoft(
-        "MICROSOFT",
-        "4 de abril de 1975",
-        "Bill Gates e Paul Allen",
-        "Expansão da inteligência artificial e infraestrutura em nuvem.",
-        865858695
-    )
+    empresa1 = Microsoft("Microsoft", 1975, "Bill Gates", "Inovação tecnológica", 1000000)
+    empresa2 = Apple("Apple", 1976, "Steve Jobs", "Design e inovação", 2000000)
+    empresa3 = Samsung("Samsung", 1938, "Lee Byung-chul", "Eletrônicos de consumo", 1500000)
 
-    Empresa2 = Apple(
-        "APPLE",
-        "1 de abril de 1976",
-        "Steve Jobs, Steve Wozniak e Ronald Wayne",
-        "Desenvolvimento de produtos tecnológicos e inovação.",
-        687768800
-    )
+    empresa1.descreva()
+    empresa1.setor_empresa()
+    empresa1.registrar_Lucro(50000)
+    empresa1.mostrar_situacao_financeira()
 
-    Empresa3 = Samsung(
-        "SAMSUNG",
-        "1 de março de 1938",
-        "Lee Byung-chul",
-        "Desenvolvimento de produtos eletrônicos e inovação.",
-        500000000
-    )
+    empresa2.descreva()
+    empresa2.setor_empresa()
+    empresa2.registrar_Prejuizos(30000)
+    empresa2.mostrar_situacao_financeira()
 
-    Empresa1.descreva()
-    Empresa1.setor_empresa()
+    funcionario1 = funcionario("João Silva", 30, "Desenvolvedor de Software", 5000, empresa1)
+    funcionario1.descreva_funcionario()
+    funcionario1.registrar_aumento(1000)
 
-    Empresa2.descreva()
-    Empresa2.setor_empresa()
+    funcionario2 = funcionario("Maria Oliveira", 28, "Analista de Marketing", 4500, empresa2)
+    funcionario2.descreva_funcionario() 
+    funcionario2.registrar_aumento(800)
 
-    Empresa3.descreva()
-    Empresa3.setor_empresa()
+    for empresa in [empresa1, empresa2, empresa3]:
+        empresa.descreva()
+        empresa.setor_empresa()
+        empresa.mostrar_situacao_financeira()
 
+        funcionario1 = funcionario("João Silva", 30, "Desenvolvedor de Software", 5000, empresa)
+        funcionario1.descreva_funcionario()
+        funcionario1.registrar_aumento(1000)
+        funcionario1.calcular_salário_anual()
+        funcionario1.registrar_desconto(500)
+
+        funcionario2 = funcionario("Maria Oliveira", 28, "Analista de Marketing", 4500, empresa)
+        funcionario2.descreva_funcionario()
+        funcionario2.registrar_aumento(800)
+        funcionario2.calcular_salário_anual()
+        funcionario2.registrar_desconto(300)
 
 if __name__ == "__main__":
     main()
-    
-
-
-
